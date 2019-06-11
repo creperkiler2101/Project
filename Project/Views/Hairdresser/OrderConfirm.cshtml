@@ -1,0 +1,27 @@
+﻿@using Project.Models;
+
+@{
+    ViewBag.Title = "OrderConfirm";
+    HairOrder order = ViewBag.Order;
+}
+
+<div class="text-center order-info">
+    <h2>Success!</h2>
+    <p>We send email to hairdresser!</p>
+    <p>Now just wait while hairdresser choosing<br />accept or decline your order</p>
+    <p>Here is order info:</p>
+    <hr />
+    <div>
+        Hair name: @ViewBag.Hair.HairName<br />
+        Hairdresser name:  @ViewBag.Hairdresser.FullName<br />
+        Hairdresser email: @ViewBag.Hairdresser.Email<br />
+        Your name: @order.Name @order.Secondname <br />
+        Your Email: @order.Email <br />
+        Meet at: @order.MeetAt.ToString("yyyy-MM-dd hh:mm tt")<br />
+    </div>
+    <hr />
+    <p>We are also send email what contains order info to @order.Email</p>
+    <p>You can cancel your order if some info is not right</p>
+    <input type="button" onclick="CancelOrder(@order.Id);" value="Cancel Order">
+</div>
+

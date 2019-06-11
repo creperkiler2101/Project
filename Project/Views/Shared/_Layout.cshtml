@@ -1,0 +1,122 @@
+﻿@using Project.Models.User
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App name - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Styles.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @{ ViewBag.UserIdentity = new UserIdentity() { Request = Request }; }
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/FileSelectScripts.js")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    <div class="mobile-menu-panel">
+        <div style="background-color: black; height: 90px;"></div>
+        <div>
+            <ul class="mobile-menu-list">
+                <li><a href="../../Home/Index">Home</a></li>
+                <li><a href="../../Home/About">Contact</a></li>
+                <li><a href="../../Hairdresser/Index">Heardresser</a></li>
+                <li><a href="../../Seamstress/Index">Seamstress</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="mobile-menu-list"></ul>
+        </div>
+    </div>
+    <div class="navigation-bar">
+        <div class="logo">
+            <a href="../../Home/Index">
+                <img src="../Images/Images/Logo.jpg" alt="logo" />
+            </a>
+        </div>
+        <div style="display: inline" id="nav-collapse">
+            <ul class="navigation-list">
+                <li onclick="location.href='../../Home/Index'"><a href="../../Home/Index">Home</a></li>
+                <li onclick="location.href='../../Home/About'"><a href="../../Home/About">Contact</a></li>
+                <li onclick="location.href='../../Hairdresser/Index'"><a href="../../Hairdresser/Index">Hairdresser</a></li>
+                <li onclick="location.href='../../Seamstress/Index'"><a href="../../Seamstress/Index">Seamstress</a></li>
+            </ul>
+            @if (!ViewBag.UserIdentity.IsLoggedIn)
+            {
+                <ul class="account-list">
+                    <li onclick="location.href='../../Account/LogIn'"><a href="../../Account/LogIn">Log In</a></li>
+                    <li onclick="location.href='../../Account/Registration'"><a href="../../Account/Registration">Registration</a></li>
+                </ul>
+            }
+            else
+            {
+                <div class="account-logged">
+                    <div class="avatar-container avatar-container-very-small">
+                        <img src="@ViewBag.UserIdentity.AvatarLink" alt="avatar" class="avatar" />
+                    </div>
+                </div>
+                <div class="user-name-display" id="user-action-list">
+                    @ViewBag.UserIdentity.Username
+                    <div style="position: absolute; left: 50%;">
+                        <div style="position: relative; left: -50%;  display: none;" class="dropdown-list" id="user-action-list-div">
+                            <ul>
+                                <li>
+                                    <a href="../../Account/Profile?username=@ViewBag.UserIdentity.Username">Profile</a>
+                                </li>
+                                @if (ViewBag.UserIdentity.IsInRole("Admin"))
+                                {
+                                    <li>
+                                        <a href="../../Account/Admin">Admin</a>
+                                    </li>
+                                }
+                                @if (ViewBag.UserIdentity.IsLoggedIn)
+                                {
+                                    <li>
+                                        <a href="../../Account/MyOrders">My Orders</a>
+                                    </li>
+                                }
+                                @if (ViewBag.UserIdentity.IsInRole("Hairdresser") || ViewBag.UserIdentity.IsInRole("Seamstress"))
+                                {
+                                    <li>
+                                        <a href="../../Account/MyWork">Work</a>
+                                    </li>
+                                }
+                                <li>
+                                    <a href="../../Account/LogOut">Log Out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div style="display: inline;" id="mobile-menu">
+            <div id="menu-button">
+                <hr />
+                <hr />
+                <hr />
+            </div>
+        </div>
+    </div>
+    <div class="body-content">
+        @RenderBody()
+    </div>
+    
+    <footer>
+        <hr />
+        <p>&copy; @DateTime.Now.Year - Team 4 (Kudrjavtsev, Radionov, Kuzichkin, Viikmaa)</p>
+        <p>Email: creperkiler2101@mail.ru</p>
+        <p>Tel: +37255663812</p>
+        <div class="inline-flex social">
+            <a href="https://vk.com/id222375341" target="_blank">
+                <img src="../../Images/Images/vkSocial.png" alt="vk" />
+            </a>
+            <a href="https://trello.com/b/OboTDT7x/project" target="_blank">
+                <img src="../../Images/Images/trelloSocial.png" alt="trello" />
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

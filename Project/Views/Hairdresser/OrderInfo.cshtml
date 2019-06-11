@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "OrderInfo";
+}
+
+<h2 class="text-center">Order Info</h2>
+<hr />
+<div class="text-center">
+    Hair name: @ViewBag.Hair.HairName<br />
+    Hairdresser name:  @ViewBag.Hairdresser.FullName<br />
+    Hairdresser email: @ViewBag.Hairdresser.Email<br />
+    Your name: @ViewBag.Order.Name @ViewBag.Order.Secondname <br />
+    Your Email: @ViewBag.Order.Email <br />
+    Meet at: @ViewBag.Order.MeetAt.ToString("yyyy-MM-dd hh:mm tt")<br />
+</div>
+<hr />
+@if (ViewBag.Order.Status == "Waiting...")
+{
+    <div class="text-center">
+        <input onclick="window.location='../Hairdresser/AcceptOrder?orderId=@ViewBag.Order.Id'" type="button" value="Accept" class="inline-block" />
+        <input onclick="window.location='../Hairdresser/DeclineOrder?orderId=@ViewBag.Order.Id'" type="button" value="Decline" class="inline-block" />
+    </div>
+}
+else
+{
+    <div class="text-center">
+        Currently order status is: @ViewBag.Order.Status
+    </div>
+}
+
+

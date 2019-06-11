@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Registration";
+}
+<form method="post" action="?" enctype="multipart/form-data" class="text-center">
+    <h2 id="reg-header">Registration</h2>
+    <div class="inline-block align-top">
+        <input type="text" name="Username" placeholder="Username" value="@ViewBag.User.Username" /> <br />
+        <input type="password" name="Password" placeholder="Password" /> <br />
+        <input type="password" name="RePassword" placeholder="RePassword" /> <br />
+        <input type="text" name="Name" placeholder="Name" value="@ViewBag.User.Name" /> <br />
+        <input type="text" name="Secondname" placeholder="Secondname" value="@ViewBag.User.Secondname" /> <br />
+        <input type="text" name="Email" placeholder="Email" value="@ViewBag.User.Email" /> <br />
+        <input type="text" name="Address" placeholder="Address*" value="@ViewBag.User.Address" /> <br />
+        @if (ViewBag.ErrorMessages != null)
+        {
+            <div class="error-box">
+                @foreach (string error in ViewBag.ErrorMessages)
+                {
+                    @error <br />
+                }
+            </div>
+        }
+        <input type="submit" value="Register" />
+    </div>
+    <div class="inline-block" id="avatar-block">
+        <div class="flexbox">
+            <div class="text-center">
+                <div class="avatar-container" id="avatar-reg">
+                    <img id="avatarPreview" src="../../Images/UserAvatars/noAvatar.png" alt="avatar" class="avatar avatar" />
+                </div>
+                <input type="file" accept="image/x-png,image/gif,image/jpeg,image/jpg,image/png" name="avatar" id="avatar" class="hidden" onchange="OnImageSelected('avatarPreview', this); OnImageSelected('avatarPreviewSmall', this)" />
+                <label for="avatar" class="button">
+                    Select image
+                </label>
+            </div>
+            <div class="avatar-container avatar-container-small" id="avatar-reg-small">
+                <img id="avatarPreviewSmall" src="../../Images/UserAvatars/noAvatar.png" alt="avatar" class="avatar" />
+            </div>
+        </div>
+    </div>
+</form>

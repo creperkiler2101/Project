@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Log In";
+}
+
+<form method="post">
+    <div class="text-center">
+        <h2>Log in</h2>
+        <input type="text" name="Username" placeholder="Username" value="@ViewBag.User.Username" /> <br />
+        <input type="password" name="Password" placeholder="Password" /> <br />
+        @if (ViewBag.Error != null)
+        {
+            <div class="error-box">
+                @ViewBag.Error
+            </div>
+        }
+        <input type="submit" value="Log in" />
+    </div>
+</form>

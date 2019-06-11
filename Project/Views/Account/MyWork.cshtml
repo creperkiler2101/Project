@@ -1,0 +1,102 @@
+﻿@using Project.Models;
+@using Project.Models.User;
+
+@{
+    ViewBag.Title = "MyWork";
+    Tuple<HairOrder, User>[] ho = ViewBag.HairOrders;
+    Tuple<SeamOrder, User>[] so = ViewBag.SeamOrders;
+}
+
+<h2>My Work</h2>
+
+
+@if (ho != null)
+{
+    <table id="hair">
+        <tr>
+            <th>Hair</th>
+            <th>User Name</th>
+            <th>User Email</th>
+            <th>Meet At</th>
+            <th>Ordered At</th>
+            <th>Complete At</th>
+            <th>Status</th>
+        </tr>
+        @foreach (Tuple<HairOrder, User> t in ho)
+        {
+            <tr>
+                <td>@t.Item1.HairName</td>
+                <td>@t.Item1.Name @t.Item1.Secondname</td>
+                <td>@t.Item1.Email</td>
+                <td>@t.Item1.MeetAt.ToString("yyyy-MM-dd hh:mm tt")</td>
+                <td>@t.Item1.OrderedAt.ToString("yyyy-MM-dd")</td>
+                @if (t.Item1.CompleteAt == null)
+                {
+                    <td>Not Complete</td>
+                }
+                else
+                {
+                    <td>@t.Item1.CompleteAt.ToString()</td>
+                }
+                <td>@t.Item1.Status</td>
+                <td>
+                    @if (t.Item1.Status == "Waiting...")
+                    {
+                        <input type="button" value="Accept" onclick="window.location='../Hairdresser/AcceptOrder?orderId=@t.Item1.Id'" />
+                        <input type="button" value="Decline" onclick="window.location='../Hairdresser/DeclineOrder?orderId=@t.Item1.Id'" />
+                    }
+                    else if (t.Item1.Status == "Accepted")
+                    {
+                        <input type="button" value="Complete" onclick="window.location='../Hairdresser/CompleteOrder?orderId=@t.Item1.Id'" />
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <table id="seam">
+        <tr>
+            <th>Cloth</th>
+            <th>Seamstress Name</th>
+            <th>Seamstress Email</th>
+            <th>User Name</th>
+            <th>User Email</th>
+            <th>Meet At</th>
+            <th>Ordered At</th>
+            <th>Complete At</th>
+            <th>Status</th>
+        </tr>
+        @foreach (Tuple<SeamOrder, User> t in so)
+        {
+            <tr>
+                <td>@t.Item1.ClothName</td>
+                <td>@t.Item1.Name @t.Item1.Secondname</td>
+                <td>@t.Item1.Email</td>
+                <td>@t.Item1.MeetAt.ToString("yyyy-MM-dd hh:mm tt")</td>
+                <td>@t.Item1.OrderedAt.ToString("yyyy-MM-dd")</td>
+                @if (t.Item1.CompleteAt == null)
+                {
+                    <td>Not Complete</td>
+                }
+                else
+                {
+                    <td>@t.Item1.CompleteAt.ToString()</td>
+                }
+                <td>@t.Item1.Status</td>
+                <td>
+                    @if (t.Item1.Status == "Waiting...")
+                    {
+                        <input type="button" value="Accept" onclick="window.location='../Seamstress/AcceptOrder?orderId=@t.Item1.Id'" />
+                        <input type="button" value="Decline" onclick="window.location='../Seamstress/DeclineOrder?orderId=@t.Item1.Id'" />
+                    }
+                    else if (t.Item1.Status == "Accepted")
+                    {
+                        <input type="button" value="Complete" onclick="window.location='../Seamstress/CompleteOrder?orderId=@t.Item1.Id'" />
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+}

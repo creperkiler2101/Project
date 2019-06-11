@@ -1,0 +1,27 @@
+﻿@using Project.Models.User;
+@{
+    ViewBag.Title = "Profile";
+}
+
+<div class="inline-block" id="profile-avatar">
+    <div class="avatar-container">
+        <img src="@ViewBag.User.AvatarLink" alt="avatar" class="avatar" />
+        @if (ViewBag.AllowEdit)
+        {
+            <form method="post" action="ChangeAvatar" enctype="multipart/form-data" class="form-container hidden">
+                <input type="file" accept="image/x-png,image/gif,image/jpeg,image/jpg,image/png" class="hidden" name="newAvatar" id="ava" onchange="form.submit();" />
+                <label class="change-avatar-label" for="ava" id="changeAvatar">
+                    Change
+                </label>
+            </form>
+        }
+    </div>
+</div>
+<div class="profile-container inline-block align-top">
+    <h2>@ViewBag.User.FullName | @ViewBag.User.Username</h2>
+    <hr />
+    <div>
+        <p>Email: @ViewBag.User.Email</p>
+        <p>Address: @ViewBag.User.Address</p>
+    </div>
+</div>

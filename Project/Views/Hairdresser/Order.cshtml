@@ -1,0 +1,81 @@
+﻿@using Project.Models.User;
+@using Project.Models;
+@{
+    ViewBag.Title = "Order";
+}
+
+<h2 class="text-center order-page-header">Make an appointment</h2>
+<form method="post">
+    <input type="hidden" name="HairdresserId" value="-1" />
+    <input type="hidden" name="HairId" value="-1" />
+    <div id="hair-stage-one" class="order-stage">
+        @foreach (WorkUser user in ViewBag.Hairdressers)
+        {
+            <div class="order-item" onclick="HairStageOne(@user.Id)">
+                <div class="avatar-container avatar-container-small inline-block order-image">
+                    <img class="avatar" src="@user.LinkToAvatar" alt="img" />
+                </div>
+                <div class="inline-block align-top">
+                    <h1>@user.FullName</h1>
+                    <h3>@user.Email</h3>
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+    <div id="hair-stage-two" class="order-stage">
+        <div class="order-item inline-block order-item-hair-chose margin-center" onclick="HairTypeChose('M');">
+            <div class="avatar-container">
+                <img class="avatar" src="../Images/Hairs/Man/bald hairstyle_M.jpg" alt="img" />
+            </div>
+            <h1 class="text-center">Man hairs</h1>
+        </div>
+        <div class="order-item inline-block order-item-hair-chose margin-center" onclick="HairTypeChose('W')" ;>
+            <div class="avatar-container">
+                <img class="avatar" src="../Images/Hairs/Woman/Aurora hairstyle_W.jpg" alt="img" />
+            </div>
+            <h1 class="text-center">Woman hairs</h1>
+        </div>
+    </div>
+    <div id="hair-stage-three-man" class="order-stage">
+        @foreach (Hair hair in ViewBag.ManHairs)
+        {
+            <div class="order-item" onclick="HairSelect(@hair.Id)">
+                <div class="avatar-container avatar-container-small inline-block order-image">
+                    <img class="avatar" src="@hair.Image" alt="img" />
+                </div>
+                <div class="inline-block align-top">
+                    <h1>@hair.HairName</h1>
+                    <h3>@hair.Price€</h3>
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+    <div id="hair-stage-three-woman" class="order-stage">
+        @foreach (Hair hair in ViewBag.WomanHairs)
+        {
+            <div class="order-item" onclick="HairSelect(@hair.Id)">
+                <div class="avatar-container avatar-container-small inline-block order-image">
+                    <img class="avatar" src="@hair.Image" alt="img" />
+                </div>
+                <div class="inline-block align-top">
+                    <h1>@hair.HairName</h1>
+                    <h3>@hair.Price€</h3>
+                </div>
+            </div>
+            <hr />
+        }
+    </div>
+    <div id="hair-stage-four" class="order-stage text-center">
+        Your name <br />
+        <input type="text" name="Name" value="@ViewBag.Name" /> <br />
+        Your secondname <br />
+        <input type="text" name="Secondname" value="@ViewBag.Secondname" /> <br />
+        Your email <br />
+        <input type="text" name="Email" value="@ViewBag.Email" /> <br />
+        Meeting timе? <br />
+        <input type="datetime-local" name="MeetAt" /> <br />
+        <input type="submit" value="Confirm" />
+    </div>
+</form>

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "BadOrder";
+}
+
+<div class="text-center">
+    <h2>Sorry, we cannot confirm order</h2>
+    <p>There is errors:</p>
+    @foreach (string error in ViewBag.Errors)
+    {
+        <p class="error-box">@error</p>
+    }
+    <input type="button" value="Try Again" onclick="window.location='../Seamstress/Order'" />
+</div>
