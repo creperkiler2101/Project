@@ -1,0 +1,281 @@
+﻿body {
+    padding-top: 0px;
+    padding-bottom: 20px;
+    background-color: #2a2a2a;
+    color: white;
+    width: 100%;
+}
+
+.body-content {
+    width: 100%;
+    padding: 150px;
+}
+
+.mobile-menu-panel {
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    background-color: #00000090;
+    display: none;
+    z-index: 100;
+    right: 0;
+}
+
+.mobile-menu-panel div {
+    width: 100%;
+}
+
+.mobile-menu-list {
+    list-style: none;
+    text-align: center;
+    width: 100%;
+    padding: 0;
+}
+
+.mobile-menu-list li {
+    margin-top: 20px;
+}
+
+.mobile-menu-list li a {
+    color: white;
+    text-decoration: underline white;
+    font-size: 35px;
+}
+
+.account-logged {
+ float: right;
+ margin-right: 20px;
+ margin-top: 4px;
+}
+
+.account-list {
+ list-style: none;
+ margin: 0 20px 0 0;
+ padding: 0;
+ float: right;
+ margin-top: 25px;
+}
+
+.account-list li:not(.no-select) {
+ display: inline;
+ border-right: 3px solid white;
+ padding: 30px 10px 30px 10px;
+ margin: 0 -5px 0 0;
+ cursor: pointer;
+}
+
+.account-list li:last-child {
+ border-right: 0;
+}
+
+.account-list li:hover:not(.no-select) {
+ background-color: white;
+ color: black;
+}
+
+.account-list li:hover a {
+ color: black;
+ font-weight: bold;
+}
+
+
+ .account-list li a {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+ }
+
+.navigation-bar {
+ width: 100%;
+ height: 90px;
+ background-color: black;
+ position: absolute;
+ z-index: 90;
+}
+
+.navigation-bar div, .navigation-bar ul {
+ display: inline-block;
+}
+
+.navigation-list {
+ list-style: none;
+ margin: 0 0 0 25px;
+ padding: 0;
+}
+
+.navigation-list li {
+ display: inline;
+ border-right: 3px solid white;
+ padding: 30px 10px 30px 10px;
+ margin: 0 -5px 0 0;
+ cursor: pointer;
+}
+
+.navigation-list li:hover {
+ background-color: white;
+ color: black;
+}
+
+ .navigation-list li:hover a {
+  color: black;
+  font-weight: bold;
+ }
+
+.navigation-list li:last-child {
+ border-right: 0;
+}
+
+.navigation-list li a {
+ font-size: 24px;
+ color: white;
+ text-decoration: none;
+}
+
+@media screen and (max-width: 660px) {
+    .body-content-child {
+        background-color: red;
+        padding: 0;
+        margin: 0;
+    }
+
+    .body-content {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 660px) {
+    #contact-info {
+        display: inline-block;
+    }
+    #map {
+        display: inline-block;
+    }
+}
+
+#menu-button {
+    float: right;
+    width: 70px;
+    margin-right: 10%;
+    cursor: pointer;
+}
+
+#menu-button hr {
+    border: 0;
+    background-color: white;
+    height: 5px;
+}
+
+.logo {
+ height: 90px;
+ margin-left: 5%;
+}
+
+.logo a img {
+ width: auto;
+ height: 100%;
+}
+
+.container, .body-content {
+ padding: 0;
+}
+
+
+
+.body-content-child {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    background-color: #171717;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.user-name-display {
+ font-size: 30px;
+ cursor: pointer;
+ float: right;
+ margin-right: 25px;
+ margin-top: 23px;
+ position: relative;
+}
+
+.dropdown-list {
+ cursor: auto;
+ width: 150px;
+ padding-top: 15px;
+ padding-bottom: 100px;
+ text-align: center;
+ position: absolute;
+ background-color: #222222;
+ border: 3px solid white;
+ border-radius: 5px;
+ z-index: 50;
+ overflow: hidden;
+}
+
+.dropdown-list ul {
+ list-style: none;
+ margin: 0px;
+ padding: 0px;
+}
+
+.dropdown-list ul li a {
+ color: white;
+ text-decoration: none;
+}
+
+.dropdown-list ul li a:hover {
+ text-decoration: underline
+}
+
+.right-align {
+ float: right;
+ margin-right: 0px;
+}
+
+.hidden {
+    display: none;
+}
+
+.flexbox {
+    display: inline-flex;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.error-box {
+    color: red;
+    text-align: center;
+}
+
+
+
+
+
+/* Avatar */
+.avatar-container {
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+.avatar-container-small {
+    width: 100px;
+    height: 100px;
+}
+.avatar-container-very-small {
+ width: 80px;
+ height: 80px;
+}
+img.avatar {
+    width: 100%;
+    height: auto;
+}
+
+/* Input */
+ 
